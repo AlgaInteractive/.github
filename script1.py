@@ -143,3 +143,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+def complete_task():
+    selected = listbox.curselection()
+    for index in selected:
+        task_text = listbox.get(index)
+        # Если ещё не отмечено как выполнено
+        if not task_text.startswith("✔ "):
+            listbox.delete(index)
+            listbox.insert(index, f"✔ {task_text}")
+            listbox.itemconfig(index, fg="gray")
